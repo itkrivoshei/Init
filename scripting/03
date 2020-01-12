@@ -1,0 +1,158 @@
+#!/bin/bash
+
+menu="
+_______________________\n
+Choose: \n
+________ \n
+	1 - Network\n
+	2 - System\n
+	3 - Scripting\n
+	4 - Quit \n
+_______________________\n"
+
+separ1="
+-----------------------\n
+"
+separ2="
+-----------------------\n
+"
+separ3="
+=======================\n
+"
+
+helep="
+_________________________\n
+Choose \$number to show (if you want to run use +\$number):\n
+\n
+	If you want back use B\n
+_________________________\n"
+
+helepNet="=========================\n
+Chooce number	01	02a	02b	03	04	05	06	07	08	09	10	11	12	13	14\n
+=========================\n"
+
+echo -e $menu
+x=0
+while [ $x = 0 ]
+do
+	read section
+	case $section in
+		'1')
+			echo -e $helep
+			n=0
+			cd ../network
+			ls
+			echo -e $separ2
+			while [ $n = 0 ]
+			do
+				read network
+				case $network in
+					[0-9][0-9][a-b])
+						echo -e $separ2
+						cat $network
+						echo -e $separ2
+						;;
+					[0-9][0-9])
+						echo -e $separ2
+						cat $network
+						echo -e $separ2
+						;;
+					[E][0-9][0-9][a-b])
+						echo -e $separ2
+						./$network
+						echo -e $separ2
+						;;
+					[E][0-9][0-9])
+						echo -e $separ2
+						./$network
+						echo -e $separ2
+						;;
+					"B")
+						echo -e $menu
+						break
+						;;
+					*)
+						echo -e $helepNet
+				esac
+			done
+
+			;;
+        	"2")
+			echo -e $helep
+			s=0
+			cd ../system
+			ls
+			echo -e $separ2
+			while [ $s = 0 ]
+			do
+				read system
+				case $system in
+					[0-9][0-9])
+						echo -e $separ1
+						./$system
+						echo -e $separ1
+						;;
+					"B")
+						echo -e $menu
+						break
+						;;
+					*)
+						echo -e $helep1
+				esac
+			done
+
+			;;
+        	"3")
+			echo -e $helep
+			s=0
+			cd ../scripting
+			ls
+			echo -e $separ2
+			while [ $s = 0 ]
+			do
+				read scripting
+				case $scripting in
+					[0][1])
+						echo -e $separ1
+						cat $scripting
+						echo -e "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nU can exec it!! Try \$E01\n-----------------------\n"
+						;;
+					[E][0][1])
+						echo -e $separ1
+						./01
+						echo -e "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nWELL DONE!!!\n-----------------------\n"
+						;;
+					[0][2])
+						echo -e $separ1
+						cat $scripting
+						echo -e "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUSE WM\n-----------------------\n"
+						;;
+					[0][3])
+						echo -e "
+         ／＞　　フ 💕
+         | 　_　 _ l 💕 I'M FINSH
+        ／ヽミ＿xノ
+       /　　　　 |
+      /　 ヽ　　 ﾉ
+     │　　|　|　|
+／￣|　　 |　|　|
+| (￣ヽ＿_ヽ_)__)
+＼二つ
+							"
+						;;
+					"B")
+						echo -e $menu
+						break
+						;;
+					*)
+						echo -e $helep1
+				esac
+			done
+            		;;
+        	"4")
+            		break
+            		;;
+        	*) echo -e "Invalid option choose number\n-----------------------"
+			;;
+    	esac
+done

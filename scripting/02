@@ -1,0 +1,43 @@
+#!/bin/bash
+
+x=0
+while [ $x = 0 ]
+do
+	echo "To remove \$user log in root | Сontinue [Y/n]?"
+	read YN
+	case "$YN" in
+		[yY][eE][sS]|[yY])
+			if [ $(cat /etc/passwd | grep home | awk -F ':' '{ print $1 }' | grep -v '#' | cat -n) ]
+			then
+				echo "Whom to destroy? (Сhoosea numbr)"
+				read user
+				del=$(cat /etc/passwd | grep -q home | awk -F ':' '{ print $1 }' | cat -n | grep $user | awk -F ' ' '{ print $2 }')
+			else
+				echo "NO \$users, only \$root"
+				exit
+			fi
+			echo "Do you really want to destroy | $del | Сontinue [Y/n]?"
+			read answ
+			if [[ $answ = "Y" || $answ = "y" ]]
+			then
+				pgrep -u $del | while read PID; do sudo kill $del; done
+				sudo userdel -fr $del
+				echo "$del HAS BIN DESTROYED"
+			elif [[ $answ = "N" || $answ = "n" ]]
+			then
+				echo "$del HAS BIN SAVED"
+			else
+				echo "What?"
+			fi
+
+			x=1
+		;;
+		[Nn][Oo]|[nN])
+			echo "Okay"
+			x=1
+		;;
+		*)
+			echo "To continue press Y or N"
+		;;
+	esac
+done

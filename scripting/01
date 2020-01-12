@@ -1,0 +1,3 @@
+#! /bin/bash
+
+cat /etc/passwd | awk -F ':' '{ print "User - " $1 " | UID - " $3 " | Path - " $6 }' | grep -v '#'

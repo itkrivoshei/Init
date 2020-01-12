@@ -1,0 +1,4 @@
+#!/bin/bash
+
+OUT=$(ifconfig en0 | grep "inet " | awk '{print $2}')
+nslookup $OUT | grep name | awk '{print $4}'
