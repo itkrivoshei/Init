@@ -1,1 +1,1 @@
-echo "fdisk -l"
+echo "lsblk"

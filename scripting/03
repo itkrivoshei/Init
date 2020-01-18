@@ -20,9 +20,15 @@ separ3="
 =======================\n
 "
 
+helep2="
+_________________________\n
+Choose \$number to show:\n
+\n
+	If you want back use B\n
+_________________________\n"
 helep="
 _________________________\n
-Choose \$number to show (if you want to run use +\$number):\n
+Choose \$number to show (if you want to run use E+\$number):\n
 \n
 	If you want back use B\n
 _________________________\n"
@@ -59,12 +65,14 @@ do
 						;;
 					[E][0-9][0-9][a-b])
 						echo -e $separ2
-						./$network
+						k=$(echo "$network" | sed 's/E//')
+						./$k
 						echo -e $separ2
 						;;
 					[E][0-9][0-9])
 						echo -e $separ2
-						./$network
+						k=$(echo "$network" | sed 's/E//')
+						./$k
 						echo -e $separ2
 						;;
 					"B")
@@ -78,7 +86,7 @@ do
 
 			;;
         	"2")
-			echo -e $helep
+			echo -e $helep2
 			s=0
 			cd ../system
 			ls
@@ -97,7 +105,7 @@ do
 						break
 						;;
 					*)
-						echo -e $helep1
+						echo -e $helep2
 				esac
 			done
 
@@ -139,6 +147,7 @@ do
 | (￣ヽ＿_ヽ_)__)
 ＼二つ
 							"
+						open .Final.mp3
 						;;
 					"B")
 						echo -e $menu

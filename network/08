@@ -1,1 +1,4 @@
-whois slash16.org | grep 'Name Server: ' | awk '{print $3}'
+#!/bin/bash
+
+x=$(host slash16.org | grep -o "[0-9][0-9].[0-9][0-9].[0-9][0-9][0-9].[0-9][0-9]" | head -n1)
+whois $x | grep -v "#"
