@@ -5,4 +5,4 @@ It consists of three parts:
 2. System
 3. Scripting
 ## License
-This project is licensed under the LGPLv3 License - see the LICENSE file for details.
+This project is licensed under the LGPLv3 License - see the [LICENSE](https://github.com/IT-Krivoshey/Init/blob/master/LICENSE) file for details.
