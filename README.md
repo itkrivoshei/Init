@@ -1,5 +1,5 @@
 # Init
-Init is a School 21 DevOps project.
+Init is a School 21 project.
 It consists of three parts:
 1. Network
 2. System
