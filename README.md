@@ -1,5 +1,5 @@
 # Init
-Init is a School 21 project.
+Init is a [42](https://42.fr/en/homepage/) project.
 It consists of three parts:
 1. Network
 2. System
